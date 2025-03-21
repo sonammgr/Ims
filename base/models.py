@@ -14,7 +14,7 @@ class Product(models.Model):
     department=models.ManyToManyField('Department')   
 
 class Purchase(models.Model):
-    product=models.ForeignKey(Product,on_delete=models.SET_NULL,null=True)
+    product=models.ForeignKey('Product',on_delete=models.CASCADE)
     quantity=models.IntegerField()
     price=models.FloatField()
     vendor=models.ForeignKey('Vendor',on_delete=models.SET_NULL,null=True)
@@ -23,9 +23,9 @@ class Sell(models.Model):
     product=models.ForeignKey(Product,on_delete=models.SET_NULL,null=True)
     quantity=models.IntegerField()
     price=models.FloatField()
-    customer=models.ForeignKey('Customer',on_delete=models.SET_NULL,null=True)
+    costomer=models.ForeignKey('Costomer',on_delete=models.SET_NULL,null=True)
 
-class Customer(models.Model):
+class Costomer(models.Model):
     name=models.CharField(max_length=200)
     email=models.EmailField()
     number=models.CharField(max_length=20)
